@@ -21,6 +21,8 @@ The project is divided into two main programs:
 - Tesseract OCR
 - matplotlib
 
+Test
+
 
 
  
