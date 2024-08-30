@@ -1,3 +1,10 @@
+import cv2
+import numpy as np
+import sys
+import os
+import json
+
+
 def display_and_save(title, image, step):
    """
    Display the image in a window and save it to disk.
@@ -60,6 +67,14 @@ def main(image_path):
         # Filter based on aspect ratio and area
         if 0.2 < aspect_ratio < 5 and area > 100:
             bounding_boxes.append((x, y, w, h))
+
+    print(f"Step 8: Number of text regions detected: {len(bounding_boxes)}")
+   # Draw bounding boxes on the original image
+    output_image = image.copy()
+    for bbox in bounding_boxes:
+       x, y, w, h = bbox
+       cv2.rectangle(output_image, (x, y), (x + w, y + h), (0, 255, 0), 2)
+       display_and_save("detected_text", output_image, 8)
 
 
 if __name__ == "__main__":
