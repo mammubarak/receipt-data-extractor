@@ -16,6 +16,8 @@ def display_and_save(title, image, step):
    cv2.imwrite(f'step_{step}_{title}.png', image)
    print(f"{title} image saved as step_{step}_{title}.png")
 
+def save_extracted_text_to_file(bounding_boxes, image, text_filename):
+
 
 def main(image_path):
     # Check if the image exists
@@ -75,6 +77,11 @@ def main(image_path):
        x, y, w, h = bbox
        cv2.rectangle(output_image, (x, y), (x + w, y + h), (0, 255, 0), 2)
        display_and_save("detected_text", output_image, 8)
+
+    print("Step 9: Saving detected text regions to JSON.")
+   # Save detected text regions to a JSON file
+    save_detected_text_to_json(bounding_boxes, 'detected_text_regions.json')
+
 
 
 if __name__ == "__main__":
