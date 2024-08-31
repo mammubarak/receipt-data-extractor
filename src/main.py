@@ -3,6 +3,7 @@ import numpy as np
 import sys
 import os
 import json
+import pytesseract
 
 
 def display_and_save(title, image, step):
@@ -16,8 +17,29 @@ def display_and_save(title, image, step):
    cv2.imwrite(f'step_{step}_{title}.png', image)
    print(f"{title} image saved as step_{step}_{title}.png")
 
+    def save_detected_text_to_json(bounding_boxes, json_filename):
+    """
+    Save the bounding boxes of detected text regions to a JSON file.
+    """
+    data = {"text_regions": []}
+    for bbox in bounding_boxes:
+        x, y, w, h = bbox
+        region = {
+            "x": x,
+            "y": y,
+            "width": w,
+            "height": h
+        }
+        data["text_regions"].append(region)
+
+
+    with open(json_filename, 'w') as json_file:
+        json.dump(data, json_file, indent=4)
+    print(f"Detected text regions saved to {json_filename}")
+
 def save_extracted_text_to_file(bounding_boxes, image, text_filename):
 
+print("testing")
 
 def main(image_path):
     # Check if the image exists
@@ -81,11 +103,6 @@ def main(image_path):
     print("Step 9: Saving detected text regions to JSON.")
    # Save detected text regions to a JSON file
     save_detected_text_to_json(bounding_boxes, 'detected_text_regions.json')
-
-    
-
-    print("Text detection and extraction completed successfully.")
-
 
 
 
