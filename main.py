@@ -27,6 +27,11 @@ def main():
             print("Step 1: Resizing image...")
             image = resize_image(image, image_output_folder, file_name)
 
+            
+            image = grayscale_image(image, image_output_folder, file_name)
+
+
+
     
 
 if __name__ == "__main__":

@@ -20,9 +20,16 @@ def resize_image(image, output_folder, file_name):
     else:
         print("Image size is sufficient, no resizing needed.")
         return image
+    
 
 def save_image(image, output_folder, file_name):
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
     output_path = os.path.join(output_folder, file_name)
     cv2.imwrite(output_path, image)
+
+
+def grayscale_image(image, output_folder, file_name):
+    # Convert the image to grayscale
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    return gray
