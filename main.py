@@ -22,6 +22,10 @@ def main():
     else:
         # Call the image reading function
         image = read_image(args.image_path)
+        if image is not None:
+            # Step 1: Resize the image if needed
+            image = resize_image(image, image_output_folder, file_name)
+
     
 
 if __name__ == "__main__":
