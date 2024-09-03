@@ -21,6 +21,11 @@ def resize_image(image, output_folder, file_name):
         print("Image size is sufficient, no resizing needed.")
         return image
 
+def grayscale_image(image, output_folder, file_name):
+    # Convert the image to grayscale
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    return gray
+
 def deskew_image(image, output_folder, file_name):
 
     # Use Gaussian blur to remove noise
@@ -69,9 +74,4 @@ def save_image(image, output_folder, file_name):
         os.makedirs(output_folder)
     output_path = os.path.join(output_folder, file_name)
     cv2.imwrite(output_path, image)
-
-
-def grayscale_image(image, output_folder, file_name):
-    # Convert the image to grayscale
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    return gray
+    print(f"|__ Image saved to {output_path}.")
