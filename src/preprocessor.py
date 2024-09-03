@@ -5,6 +5,7 @@ def resize_image(image, output_folder, file_name):
     # Minimum dimensions (width, height) for resizing small images
     min_width, min_height = 800, 1200
     height, width = image.shape[:2]
+    print(f"Original image dimensions: height: {height}, width: {width}")
 
     # Resize if the image is smaller than the minimum width/height
     if width < min_width or height < min_height:
@@ -14,8 +15,10 @@ def resize_image(image, output_folder, file_name):
 
         # Save resized image
         save_image(resized_image, output_folder, f"resized_{file_name}")
+        print(f"Image resized to {new_dimensions}.")
         return resized_image
     else:
+        print("Image size is sufficient, no resizing needed.")
         return image
 
 def save_image(image, output_folder, file_name):
