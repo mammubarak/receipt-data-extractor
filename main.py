@@ -33,7 +33,7 @@ def main():
 
             # Step 3: Deskew the image to correct angle
             print("\nStep 3: Deskew image to correct angles...")
-            image = deskew_image(image, image_output_folder, file_name)
+            #image = deskew_image(image, image_output_folder, file_name)
 
             # Step 4: Smooth folds
             print("Step 4: Smoothing folds...")
