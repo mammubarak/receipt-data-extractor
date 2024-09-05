@@ -1,7 +1,8 @@
 import argparse
 import os
 from src.image_reader import read_image
-from src.preprocessor import resize_image, grayscale_image, deskew_image
+from src.preprocessor import resize_image, grayscale_image, smooth_folds, deskew_image
+from src.text_detection import detect_text_areas
 
 def main():
     # Set up CLI argument parsing
