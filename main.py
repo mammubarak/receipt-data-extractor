@@ -5,6 +5,7 @@ from src.preprocessor import resize_image, grayscale_image, smooth_folds, deskew
 from src.text_detection import detect_text_areas
 from src.ocr_recognition import ocr_recognition
 from src.summarizer import summarize_receipt
+from src.visualizer import compare_receipts
 
 def main():
     # Set up CLI argument parsing
