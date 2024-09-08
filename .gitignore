@@ -1,1 +1,5 @@
 **/.DS_Store
+# ignore data folder
+data/
+# ignore processed images
+images/processed/
