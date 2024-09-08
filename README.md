@@ -1,28 +1,42 @@
 # Receipt-Data-Extractor
-This is a Python project, It performes Sales Receipt Data Extraction using Computer Graphics and Visualization techniques. This project is a command-line application that processes and analyzes shopping receipts from image sources. It extracts text content from receipt images, produces summaries, and generates sales reports with graphical representations.
+
+## Description
+This CLI application processes receipt images, detects text areas, extracts text (items, prices, and totals), and compares multiple receipts by visualizing the totals in a chart.
 
 ## Features
+- Image preprocessing (resizing, orientation correction, deskewing)
+- Text area detection
+- Optical Character Recognition (OCR) using Tesseract
+- Summarization of receipt data (item name, quantity, price, subtotal, cash, change)
+- Comparison of multiple receipts with a visual bar chart
 
-- Image processing of receipt photos
-- Text extraction from processed images
-- Summary generation for individual receipts
+## Prerequisites
 
-## Project Structure
+1. **Install Tesseract**
+   - **Windows**: Download and install Tesseract [here](https://github.com/tesseract-ocr/tesseract/wiki)
+   If using windows to run the program, un-comment line 7 in ocr_recognition.py file. (Give the correct installed path)
+   - **Linux**: Install via terminal:
+     ```bash
+     sudo apt install tesseract-ocr
+     ```
+   - **macOS**: Install via Homebrew:
+     ```bash
+     brew install tesseract
+     ```
 
-The project is divided into two main programs:
+2. **Install Python Dependencies**
+   Run the following command to install dependencies:
+   ```bash
+   pip install -r requirements.txt
 
-1. **Receipt Processor**: Handles image processing, text extraction, and individual receipt summary generation.
-2. **Sales Analyzer**: Generates aggregate sales reports and graphical representations.
+## Running the Application
 
-## Requirements
+### Process a single receipt
+```bash
+python main.py path/to/receipt_image.jpg
+```
 
-- Python 3
-- OpenCV
-- Tesseract OCR
-- matplotlib
-
-Test
-
-
-
- 
+### Compare multiple receipts
+```bash
+python main.py --compare
+```
