@@ -10,11 +10,11 @@ from src.visualizer import compare_receipts
 def main():
     # Set up CLI argument parsing
     parser = argparse.ArgumentParser(description="Receipt Processing CLI")
-    parser.add_argument("image_path", type=str, help="Path to the receipt image")
+    parser.add_argument("image_path", type=str, nargs="?", help="Path to the receipt image")
     parser.add_argument("--compare", action="store_true", help="Compare multiple receipts")
 
     args = parser.parse_args()
-    file_name = os.path.basename(args.image_path)
+    file_name = None
 
     text_output_folder = "data/summaries/"
     image_output_folder = "images/processed/"
@@ -24,6 +24,7 @@ def main():
         # Compare multiple receipts
         compare_receipts(text_output_folder, comparison_output_folder)
     else:
+        file_name = os.path.basename(args.image_path)
         # Call the image reading function
         image = read_image(args.image_path)
         if image is not None:
