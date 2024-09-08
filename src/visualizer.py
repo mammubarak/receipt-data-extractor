@@ -39,4 +39,4 @@ def compare_receipts(summary_folder, output_folder):
     plt.savefig(output_path)
     plt.show()
 
-    print(f"Comparison chart saved to {output_path}")
+    print(f"|__ Comparison chart saved to {output_path}")

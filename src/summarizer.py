@@ -2,8 +2,6 @@ import re
 import os
 import pandas as pd
 
-
-
 def summarize_receipt(text, output_folder, file_name):
     # Regular expressions to extract item name, quantity, and price
     item_pattern = re.compile(r"([A-Za-z\s]+)\s+(\d+)\s+([\d\.]+)")
@@ -47,9 +45,9 @@ def summarize_receipt(text, output_folder, file_name):
     # Save the summary to CSV
     save_summary(df_items, subtotal, cash, change, output_folder, file_name)
 
-    print(f"Summarized receipt: {file_name}")
+    print(f"|__ Summarized receipt: {file_name}\n")
     print(df_items)
-    print(f"Sub Total: {subtotal}")
+    print(f"\nSub Total: {subtotal}")
     print(f"Cash: {cash}")
     print(f"Change: {change}")
 
@@ -68,6 +66,4 @@ def save_summary(df, subtotal, cash, change, output_folder, file_name):
         f.write(f"Cash: {cash}\n")
         f.write(f"Change: {change}\n")
 
-    print(f"Summary saved to {summary_file}")
-
-
+    print(f"|__ Summary saved to {summary_file}")

@@ -28,19 +28,19 @@ def main():
         image = read_image(args.image_path)
         if image is not None:
             # Step 1: Resize the image if needed
-            print("Step 1: Resizing image...")
+            print("\nStep 1: Resizing image...")
             image = resize_image(image, image_output_folder, file_name)
 
             # Step 2: Convert the image to grayscale
-            print("Step 2: Converting image to grayscale...")
+            print("\nStep 2: Converting image to grayscale...")
             image = grayscale_image(image, image_output_folder, file_name)
 
             # Step 3: Deskew the image to correct angle
             print("\nStep 3: Deskew image to correct angles...")
-            #image = deskew_image(image, image_output_folder, file_name)
+            # image = deskew_image(image, image_output_folder, file_name)
 
             # Step 4: Smooth folds
-            print("Step 4: Smoothing folds...")
+            print("\nStep 4: Smoothing folds...")
             image = smooth_folds(image, image_output_folder, file_name)
 
             # Step 5: Detect text areas
@@ -48,13 +48,12 @@ def main():
             # image = detect_text_areas(image, image_output_folder, file_name)
 
             # Step 6: Perform OCR to extract text
-            print("Step 6: Extrating text from image using OCR...")
+            print("\nStep 6: Extrating text from image using OCR...")
             extracted_text = ocr_recognition(image, text_output_folder, file_name)
 
             # Step 7: Summarize the receipt
-            print("Step 7: Summarizing the receipt...")
+            print("\nStep 7: Summarizing the receipt...")
             summarize_receipt(extracted_text, text_output_folder, file_name)
-
 
 if __name__ == "__main__":
     main()

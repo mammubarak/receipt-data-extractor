@@ -5,7 +5,7 @@ def resize_image(image, output_folder, file_name):
     # Minimum dimensions (width, height) for resizing small images
     min_width, min_height = 800, 1200
     height, width = image.shape[:2]
-    print(f"Original image dimensions: height: {height}, width: {width}")
+    print(f"|__ Original image dimensions: height: {height}, width: {width}")
 
     # Resize if the image is smaller than the minimum width/height
     if width < min_width or height < min_height:
@@ -15,10 +15,10 @@ def resize_image(image, output_folder, file_name):
 
         # Save resized image
         save_image(resized_image, output_folder, f"resized_{file_name}")
-        print(f"Image resized to {new_dimensions}.")
+        print(f"|__ Image resized to {new_dimensions}.")
         return resized_image
     else:
-        print("Image size is sufficient, no resizing needed.")
+        print("|__ Image size is sufficient, no resizing needed.")
         return image
 
 def grayscale_image(image, output_folder, file_name):
@@ -67,16 +67,16 @@ def deskew_image(image, output_folder, file_name):
     else:
         print("|__ No contours found for deskewing.")
         return image
-    
+
 def smooth_folds(image, output_folder, file_name):
     # Apply Gaussian blur to smooth out folds and wrinkles
     blurred_image = cv2.GaussianBlur(image, (5, 5), 0)
 
     # Save blurred image
     save_image(blurred_image, output_folder, f"smoothed_{file_name}")
-    print("Image smoothed to reduce folds.")
+    print("|__ Image smoothed to reduce folds.")
     return blurred_image
-    
+
 def save_image(image, output_folder, file_name):
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
