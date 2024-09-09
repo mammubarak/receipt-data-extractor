@@ -125,6 +125,12 @@ def main(image_path):
    # Save detected text regions to a JSON file
     save_detected_text_to_json(bounding_boxes, 'detected_text_regions.json')
 
+   print("Step 10: Extracting and saving text using OCR.")
+   # Extract and save detected text to a text file
+   save_extracted_text_to_file(bounding_boxes, gray, 'extracted_text.txt')
+
+
+   print("Text detection and extraction completed successfully.")
 
 
 if __name__ == "__main__":
