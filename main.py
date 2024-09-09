@@ -39,6 +39,10 @@ def main():
             print("Step 4: Smoothing folds...")
             image = smooth_folds(image, image_output_folder, file_name)
 
+            # Step 5: Detect text areas
+            print("\nStep 5: Detecting text areas in the image...")
+            # image = detect_text_areas(image, image_output_folder, file_name)
+
 
 if __name__ == "__main__":
     main()
