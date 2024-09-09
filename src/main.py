@@ -40,6 +40,11 @@ def main(image_path):
     edged = cv2.Canny(gray, 50, 250, apertureSize = 5, L2gradient = True)
     display_and_save("canny", edged, 4)
 
+    print("Step 5: Applying dilation to connect text regions.")
+    # Apply dilation to connect text regions
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
+    dilated = cv2.dilate(edged, kernel, iterations=1)
+    display_and_save("dilated", dilated, 5)
 
 
 if __name__ == "__main__":
