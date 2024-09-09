@@ -14,7 +14,7 @@ This CLI application processes receipt images, detects text areas, extracts text
 
 1. **Install Tesseract**
    - **Windows**: Download and install Tesseract [here](https://github.com/tesseract-ocr/tesseract/wiki)
-   If using windows to run the program, un-comment line 7 in ocr_recognition.py file. (Give the correct installed path)
+   <br>If using windows to run the program, un-comment line 7 in ocr_recognition.py file. (Give the correct installed path)
    - **Linux**: Install via terminal:
      ```bash
      sudo apt install tesseract-ocr
@@ -34,6 +34,10 @@ This CLI application processes receipt images, detects text areas, extracts text
 ### Process a single receipt
 ```bash
 python main.py path/to/receipt_image.jpg
+```
+- example:
+```bash
+python main.py images/input/r1.png
 ```
 
 ### Compare multiple receipts
