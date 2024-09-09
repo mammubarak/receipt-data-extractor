@@ -82,6 +82,11 @@ def main(image_path):
    # Save detected text regions to a JSON file
     save_detected_text_to_json(bounding_boxes, 'detected_text_regions.json')
 
+    
+
+    print("Text detection and extraction completed successfully.")
+
+
 
 
 if __name__ == "__main__":
