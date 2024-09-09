@@ -34,6 +34,12 @@ def main(image_path):
     blurred = cv2.GaussianBlur(gray, (5, 5), 0)
     display_and_save("blurred", blurred, 3)
 
+    print("Step 4: Performing Canny edge detection.")
+    # Perform Canny edge detection
+    # edged = cv2.Canny(gray, 25, 450)
+    edged = cv2.Canny(gray, 50, 250, apertureSize = 5, L2gradient = True)
+    display_and_save("canny", edged, 4)
+
 
 
 if __name__ == "__main__":
