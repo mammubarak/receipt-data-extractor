@@ -38,8 +38,29 @@ def display_and_save(title, image, step):
     print(f"Detected text regions saved to {json_filename}")
 
 def save_extracted_text_to_file(bounding_boxes, image, text_filename):
+    """
+    Extract text from detected regions using OCR and save to a text file.
+    """
+    with open(text_filename, 'w') as text_file:
+        for i, bbox in enumerate(bounding_boxes):
+            x, y, w, h = bbox
+            # Crop the detected region from the image
+            detected_region = image[y:y + h, x:x + w]
 
-print("testing")
+
+            # Use pytesseract to extract text from the cropped region
+            extracted_text = pytesseract.image_to_string(detected_region)
+
+
+            # Write the extracted text to the file
+            text_file.write(f"Text from region {i + 1}:\n{extracted_text}\n")
+            text_file.write("-" * 40 + "\n")
+            print(f"Extracted text from region {i + 1} written to file.")
+
+
+    print(f"Extracted text saved to {text_filename}")
+
+
 
 def main(image_path):
     # Check if the image exists
