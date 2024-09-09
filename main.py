@@ -1,7 +1,7 @@
 import argparse
 import os
 from src.image_reader import read_image
-
+from src.preprocessor import resize_image, grayscale_image, deskew_image
 
 def main():
     # Set up CLI argument parsing
@@ -31,9 +31,10 @@ def main():
             print("Step 2: Converting image to grayscale...")
             image = grayscale_image(image, image_output_folder, file_name)
 
+            # Step 3: Deskew the image to correct angle
+            print("\nStep 3: Deskew image to correct angles...")
+            image = deskew_image(image, image_output_folder, file_name)
 
-
-    
 
 if __name__ == "__main__":
     main()

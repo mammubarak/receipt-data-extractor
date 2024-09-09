@@ -20,6 +20,53 @@ def resize_image(image, output_folder, file_name):
     else:
         print("Image size is sufficient, no resizing needed.")
         return image
+
+def grayscale_image(image, output_folder, file_name):
+    # Convert the image to grayscale
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    return gray
+
+def deskew_image(image, output_folder, file_name):
+
+    # Use Gaussian blur to remove noise
+    blurred = cv2.GaussianBlur(image, (5, 5), 0)
+
+    # Apply edge detection or binary thresholding to highlight contours
+    edged = cv2.Canny(blurred, 50, 150)
+
+    # Find the contours of the edges
+    contours, _ = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+    # If contours are found, proceed with finding the angle
+    if len(contours) > 0:
+        # Get the largest contour (likely the receipt boundary)
+        largest_contour = max(contours, key=cv2.contourArea)
+
+        # Get the minimum bounding box for the contour
+        rect = cv2.minAreaRect(largest_contour)
+
+        # Get the angle of rotation
+        angle = rect[-1]
+
+        # The angle may sometimes be negative, adjust it
+        if angle < -45:
+            angle = -(90 + angle)
+        else:
+            angle = -angle
+
+        # Rotate the image to deskew
+        (h, w) = image.shape[:2]
+        center = (w // 2, h // 2)
+        rotation_matrix = cv2.getRotationMatrix2D(center, angle, 1.0)
+        deskewed_image = cv2.warpAffine(image, rotation_matrix, (w, h), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE)
+
+        # Save the deskewed image
+        save_image(deskewed_image, output_folder, f"deskewed_{file_name}")
+        print(f"|__ Image deskewed by {angle} degrees.")
+        return deskewed_image
+    else:
+        print("|__ No contours found for deskewing.")
+        return image
     
 
 def save_image(image, output_folder, file_name):
@@ -27,9 +74,4 @@ def save_image(image, output_folder, file_name):
         os.makedirs(output_folder)
     output_path = os.path.join(output_folder, file_name)
     cv2.imwrite(output_path, image)
-
-
-def grayscale_image(image, output_folder, file_name):
-    # Convert the image to grayscale
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    return gray
+    print(f"|__ Image saved to {output_path}.")
