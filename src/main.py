@@ -29,6 +29,12 @@ def main(image_path):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     display_and_save("grayscale", gray, 2)
 
+    print("Step 3: Applying Gaussian Blur to reduce noise.")
+    # Apply Gaussian Blur
+    blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+    display_and_save("blurred", blurred, 3)
+
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
