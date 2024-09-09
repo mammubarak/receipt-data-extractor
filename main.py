@@ -4,6 +4,7 @@ from src.image_reader import read_image
 from src.preprocessor import resize_image, grayscale_image, smooth_folds, deskew_image
 from src.text_detection import detect_text_areas
 from src.ocr_recognition import ocr_recognition
+from src.summarizer import summarize_receipt
 
 def main():
     # Set up CLI argument parsing
@@ -48,6 +49,10 @@ def main():
             # Step 6: Perform OCR to extract text
             print("Step 6: Extrating text from image using OCR...")
             extracted_text = ocr_recognition(image, text_output_folder, file_name)
+
+            # Step 7: Summarize the receipt
+            print("Step 7: Summarizing the receipt...")
+            summarize_receipt(extracted_text, text_output_folder, file_name)
 
 
 if __name__ == "__main__":
