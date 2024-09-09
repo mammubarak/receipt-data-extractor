@@ -45,11 +45,21 @@ def main(image_path):
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
     dilated = cv2.dilate(edged, kernel, iterations=1)
     display_and_save("dilated", dilated, 5)
-    
+
     print("Step 6: Finding contours in the image.")
     # Find contours
     contours, hierarchy = cv2.findContours(dilated, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
+    print(f"Step 7: Filtering contours based on size and aspect ratio. Total contours found: {len(contours)}")
+    # Initialize list to hold bounding boxes
+    bounding_boxes = []
+    for cnt in contours:
+        x, y, w, h = cv2.boundingRect(cnt)
+        aspect_ratio = w / float(h)
+        area = w * h
+        # Filter based on aspect ratio and area
+        if 0.2 < aspect_ratio < 5 and area > 100:
+            bounding_boxes.append((x, y, w, h))
 
 
 if __name__ == "__main__":
