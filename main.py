@@ -3,6 +3,7 @@ import os
 from src.image_reader import read_image
 from src.preprocessor import resize_image, grayscale_image, smooth_folds, deskew_image
 from src.text_detection import detect_text_areas
+from src.ocr_recognition import ocr_recognition
 
 def main():
     # Set up CLI argument parsing
@@ -43,6 +44,10 @@ def main():
             # Step 5: Detect text areas
             print("\nStep 5: Detecting text areas in the image...")
             # image = detect_text_areas(image, image_output_folder, file_name)
+
+            # Step 6: Perform OCR to extract text
+            print("Step 6: Extrating text from image using OCR...")
+            extracted_text = ocr_recognition(image, text_output_folder, file_name)
 
 
 if __name__ == "__main__":
