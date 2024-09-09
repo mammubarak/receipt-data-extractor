@@ -24,6 +24,11 @@ def main(image_path):
         sys.exit(1)
     display_and_save("original", image, 1)
 
+    print("Step 2: Converting to grayscale.")
+    # Convert to grayscale
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    display_and_save("grayscale", gray, 2)
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
