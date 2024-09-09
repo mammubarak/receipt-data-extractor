@@ -68,7 +68,15 @@ def deskew_image(image, output_folder, file_name):
         print("|__ No contours found for deskewing.")
         return image
     
+def smooth_folds(image, output_folder, file_name):
+    # Apply Gaussian blur to smooth out folds and wrinkles
+    blurred_image = cv2.GaussianBlur(image, (5, 5), 0)
 
+    # Save blurred image
+    save_image(blurred_image, output_folder, f"smoothed_{file_name}")
+    print("Image smoothed to reduce folds.")
+    return blurred_image
+    
 def save_image(image, output_folder, file_name):
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
