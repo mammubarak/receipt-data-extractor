@@ -1,5 +1,6 @@
 import argparse
 import os
+from src.image_reader import read_image
 
 
 def main():
@@ -18,6 +19,9 @@ def main():
     if args.compare:
         # Compare multiple receipts
         compare_receipts(text_output_folder, comparison_output_folder)
+    else:
+        # Call the image reading function
+        image = read_image(args.image_path)
     
 
 if __name__ == "__main__":
