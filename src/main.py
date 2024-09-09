@@ -45,6 +45,11 @@ def main(image_path):
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
     dilated = cv2.dilate(edged, kernel, iterations=1)
     display_and_save("dilated", dilated, 5)
+    
+    print("Step 6: Finding contours in the image.")
+    # Find contours
+    contours, hierarchy = cv2.findContours(dilated, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
 
 
 if __name__ == "__main__":
