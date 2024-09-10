@@ -2,6 +2,10 @@ import cv2
 import pytesseract
 import os
 
+# Set the path to the Tesseract executable (needed for Windows)
+# Uncomment and set the correct path if using Windows
+# pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+
 def ocr_recognition(image, output_folder, file_name):
 
     # Apply binary thresholding to make the text stand out
@@ -13,8 +17,8 @@ def ocr_recognition(image, output_folder, file_name):
 
     # Save the extracted text to a file
     save_text(output_folder, file_name, text)
-    print(f"Extracted text from {file_name}:")
-    print(text)
+    print(f"|__ Extracted text from {file_name}:")
+    print(f"\n{text}")
     return text
 
 def save_text(output_folder, file_name, text):

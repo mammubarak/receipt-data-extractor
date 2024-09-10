@@ -1,0 +1,3 @@
+Sub Total: 32.0
+Cash: 0.0
+Change: 0.0

@@ -1,1 +1,7 @@
 **/.DS_Store
+# ignore data folder
+data/
+# ignore processed images
+images/processed/
+# Ignore Python bytecode cache
+__pycache__/
