@@ -4,7 +4,7 @@ import os
 
 # Set the path to the Tesseract executable (needed for Windows)
 # Uncomment and set the correct path if using Windows
-# pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+# pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
 
 def ocr_recognition(image, output_folder, file_name):
 
